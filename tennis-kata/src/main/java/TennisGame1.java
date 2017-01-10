@@ -21,15 +21,7 @@ public class TennisGame1 implements TennisGame {
 		if (player1Score == player2Score) {
 			score = tie();
 		} else if (player1Score >= 4 || player2Score >= 4) {
-			int minusResult = player1Score - player2Score;
-			if (minusResult == 1)
-				score = "Advantage player1";
-			else if (minusResult == -1)
-				score = "Advantage player2";
-			else if (minusResult >= 2)
-				score = "Win for player1";
-			else
-				score = "Win for player2";
+			score = scoreAboveFour();
 		} else {
 			for (int i = 1; i < 3; i++) {
 				if (i == 1)
@@ -55,6 +47,18 @@ public class TennisGame1 implements TennisGame {
 			}
 		}
 		return score;
+	}
+
+	private String scoreAboveFour() {
+		int scoreDiffrence = player1Score - player2Score;
+		if (scoreDiffrence == 1)
+			return "Advantage player1";
+		else if (scoreDiffrence == -1)
+			return "Advantage player2";
+		else if (scoreDiffrence >= 2)
+			return "Win for player1";
+		else
+			return"Win for player2";
 	}
 
 	private String tie() {
