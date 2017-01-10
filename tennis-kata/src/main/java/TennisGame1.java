@@ -16,13 +16,13 @@ public class TennisGame1 implements TennisGame {
 	}
 
 	public String getScore() {
-		String score = "";
-		int tempScore = 0;
 		if (player1Score == player2Score) {
-			score = tie();
+			return tie();
 		} else if (player1Score >= 4 || player2Score >= 4) {
-			score = scoreAboveFour();
+			return scoreAboveFour();
 		} else {
+			String score = "";
+			int tempScore = 0;
 			for (int i = 1; i < 3; i++) {
 				if (i == 1)
 					tempScore = player1Score;
@@ -30,23 +30,15 @@ public class TennisGame1 implements TennisGame {
 					score += "-";
 					tempScore = player2Score;
 				}
-				switch (tempScore) {
-				case 0:
-					score += "Love";
-					break;
-				case 1:
-					score += "Fifteen";
-					break;
-				case 2:
-					score += "Thirty";
-					break;
-				case 3:
-					score += "Forty";
-					break;
-				}
+				score += scoreToNameMap(tempScore);
 			}
+			return score;
 		}
-		return score;
+		
+	}
+
+	private String scoreToNameMap(int tempScore) {
+		return Point.values()[tempScore].toString();
 	}
 
 	private String scoreAboveFour() {

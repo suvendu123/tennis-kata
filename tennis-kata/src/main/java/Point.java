@@ -1,6 +1,6 @@
 
 public enum Point {
-	Love(0), Fifteen(1), Thirty(2), Deuce(3);
+	Love(0), Fifteen(1), Thirty(2), Forty(3), Deuce(4);
 	private int value;
 
 	Point(int value) {
