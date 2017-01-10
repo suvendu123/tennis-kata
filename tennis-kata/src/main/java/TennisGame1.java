@@ -20,21 +20,8 @@ public class TennisGame1 implements TennisGame {
 			return tie();
 		} else if (player1Score >= 4 || player2Score >= 4) {
 			return scoreAboveFour();
-		} else {
-			String score = "";
-			int tempScore = 0;
-			for (int i = 1; i < 3; i++) {
-				if (i == 1)
-					tempScore = player1Score;
-				else {
-					score += "-";
-					tempScore = player2Score;
-				}
-				score += scoreToNameMap(tempScore);
-			}
-			return score;
-		}
-		
+		} 
+			return scoreToNameMap(this.player1Score) + "-" + scoreToNameMap(this.player2Score);
 	}
 
 	private String scoreToNameMap(int tempScore) {
